@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     
   // Define template
   let template = `
-h1 hello ${name}
+h1 hello !{name}
 form(method='GET' action='/')
   label(for='name') What is your name ?
   input#name.form-control(type='text', placeholder='first and last' name='name')
