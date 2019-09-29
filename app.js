@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
   // Setting Greeting name
   let name = "world"
   if(typeof req.query.name != 'undefined'){
+      console.log(req.query.name);
       name = req.query.name;
   }
     
@@ -19,7 +20,7 @@ app.get('/', (req, res) => {
     <h1>hello ${name}</h1></br>
     <form action="/">
       What is your name ?
-      <input type="text" name="name">
+      <input type="text" name="name" value="${name}">
       <input type="submit" value="Submit">
     </form>`;
   
@@ -29,4 +30,4 @@ app.get('/', (req, res) => {
 
 
 // Start Application
-app.listen(3000, () => console.log('app listening on 3000'));
+app.listen(3000, '0.0.0.0', () => console.log('app listening on 3000'));
