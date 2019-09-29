@@ -1,4 +1,5 @@
 # express-xss
+
 This application is a demonstration prototype just to show how to perform XSS attacks. This tutorial will walk you through using templating engine to prevent XSS attacks. The intermediate steps show you the different possible mistakes with JavaScript and Pug.
 
 # step 0 
@@ -30,16 +31,28 @@ XSS Auditor is removed in Chrome 78 and highter version.
 
 * Open http://localhost:3000
 
-* Insert a simple XSS payloads as name
+* Complete name field with a simple XSS payload
 
 ```javascript
-<script>alert("hello");</script>
+<script>alert("XSS");</script>
 ```
 
-or
+* Complete name field with a XSS payload (without script tag)
 
 ```javascript
 <img src=1 href=1 onerror="javascript:alert('XSS')"></img>
+```
+
+* Complete name field with a XSS payload (with context breaking)
+
+```javascript
+" autofocus onfocus="alert('XSS')
+```
+
+* Complete name field with a polygloat XSS
+
+```javascript
+javascript:"/*'/*`/*--></noscript></title></textarea></style></template></noembed></script><html \" onmouseover=/*<svg/*/onload=alert('XSS')//>
 ```
 
 # Step 2
